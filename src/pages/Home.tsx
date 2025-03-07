@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Trees,
   Bird,
@@ -9,11 +9,15 @@ import {
   AlertTriangle,
   TrendingDown,
   Leaf,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 
-function Home() {
-  const [showActions, setShowActions] = useState(false);
+interface HomeProps {
+  showActions: boolean;
+}
 
+function Home({ showActions }: HomeProps) {
   const actions = [
     "Plantez des espèces locales dans votre jardin - 1m² peut abriter jusqu'à 20 espèces différentes",
     "Créez des refuges pour la faune sauvage - 80% des oiseaux européens sont en déclin",
@@ -24,28 +28,6 @@ function Home() {
 
   return (
     <>
-      {showActions && (
-        <section
-          id="actions"
-          className="bg-white rounded-2xl p-8 shadow-xl mb-16"
-        >
-          <h2 className="text-2xl font-semibold mb-6 text-emerald-800">
-            5 Actions pour Protéger la Biodiversité
-          </h2>
-          <div className="grid gap-4">
-            {actions.map((action, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4 p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition"
-              >
-                <Sprout className="h-5 w-5 text-emerald-600 flex-shrink-0" />
-                <p className="text-emerald-900">{action}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       <section className="text-center py-16">
         <div className="bg-red-50 rounded-lg p-4 mb-8 inline-flex items-center gap-2">
           <AlertTriangle className="text-red-600 h-5 w-5" />
@@ -88,6 +70,27 @@ function Home() {
           </div>
         </div>
       </section>
+      {showActions && (
+        <section
+          id="actions"
+          className="bg-white rounded-2xl p-8 shadow-xl mb-16"
+        >
+          <h2 className="text-2xl font-semibold mb-6 text-emerald-800">
+            5 Actions pour Protéger la Biodiversité
+          </h2>
+          <div className="grid gap-4">
+            {actions.map((action, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition"
+              >
+                <Sprout className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                <p className="text-emerald-900">{action}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="py-16 text-center">
         <div className="bg-emerald-800 text-white rounded-2xl p-8 md:p-12 transform hover:scale-[1.02] transition">

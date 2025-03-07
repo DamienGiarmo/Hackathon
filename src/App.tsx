@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Trees, GamepadIcon } from "lucide-react";
 import Home from "./pages/Home";
 import Games from "./pages/Games";
 
 function App() {
+  const [showActions, setShowActions] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-emerald-100">
@@ -25,15 +27,16 @@ function App() {
                 Mini-jeux
               </Link>
               <button
-                onClick={() =>
+                onClick={() => {
+                  setShowActions(!showActions);
                   window.scrollTo({
                     top: document.querySelector("section")?.offsetTop || 0,
                     behavior: "smooth",
-                  })
-                }
+                  });
+                }}
                 className="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition"
               >
-                Agir maintenant
+                {showActions ? "Masquer les actions" : "Agir maintenant"}
               </button>
             </div>
           </nav>
@@ -41,7 +44,7 @@ function App() {
 
         <main className="container mx-auto px-4 pt-24">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home showActions={showActions} />} />
             <Route path="/games" element={<Games />} />
           </Routes>
         </main>
