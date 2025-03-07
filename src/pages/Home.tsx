@@ -64,9 +64,11 @@ function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="bg-white rounded-xl p-6 shadow-lg transform hover:scale-[1.05] transition">
             <Bird className="h-[48px] w-[48px] text-[rgb(16,185,129)] mx-auto mb-[16px]" />
-            <h3 className="text-lg font-semibold mb-[8px]">Faune</h3>
-            <p>1 million d'espèces menacées d'extinction d'ici 2050</p>
-            <p className="text-sm text-red mt-[8px]"> -30% depuis les années</p>
+            <h3 className="text-lg font-semibold mb-2">Faune</h3>
+            <p className="text-gray-600">
+              1 million d'espèces menacées d'extinction d'ici 2050
+            </p>
+            <p className="text-sm text-red-600 mt-2"> -30% depuis les années</p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg transform hover:scale-105 transition">
             <Flower2 className="h-12 w-12 text-emerald-600 mx-auto mb-4" />

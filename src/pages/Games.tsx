@@ -57,7 +57,7 @@ function Games() {
     <div className="container mx-auto px-4 py-8">
       <button
         onClick={() => navigate(-1)}
-        className="mb-4 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition"
+        className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200 transition flex items-center gap-2"
       >
         ← Retour
       </button>
