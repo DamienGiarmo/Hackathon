@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Trees, GamepadIcon, LineChart } from "lucide-react";
 import Home from "./pages/Home";
 import Games from "./pages/Games";
 import Tracker from "./pages/Tracker";
 
-function App() {
-  const [showActions, setShowActions] = useState(false); 
-
+const App: React.FC = () => {
   return (  
-    <BrowserRouter>
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-emerald-100">
         <header className="bg-white/80 backdrop-blur-sm fixed w-full shadow-sm">
           <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -34,15 +31,7 @@ function App() {
                 <LineChart className="h-4 w-4" />
                 Tracker
               </Link>
-              <button
-                onClick={() => {
-                  const section = document.querySelector("section");
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-                className="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition"
-              >
+              <button className="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition">
                 Agir maintenant
               </button>
             </div>
@@ -63,7 +52,6 @@ function App() {
           </div>
         </footer>
       </div>
-    </BrowserRouter>
   );
 }
 
