@@ -1,12 +1,13 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import { Trees, GamepadIcon, LineChart } from "lucide-react";
 import Home from "./pages/Home";
 import Games from "./pages/Games";
 import Tracker from "./pages/Tracker";
 
-const App: React.FC = () => {
-  return (  
+function App() {
+  const [showActions, setShowActions] = useState(false);
+  return (
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-emerald-100">
         <header className="bg-white/80 backdrop-blur-sm fixed w-full shadow-sm">
           <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -31,8 +32,17 @@ const App: React.FC = () => {
                 <LineChart className="h-4 w-4" />
                 Tracker
               </Link>
-              <button className="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition">
-                Agir maintenant
+              <button
+                onClick={() => {
+                  setShowActions(!showActions);
+                  window.scrollTo({
+                    top: document.querySelector("section")?.offsetTop || 0,
+                    behavior: "smooth",
+                  });
+                }}
+                className="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition"
+              >
+                {showActions ? "Masquer les actions" : "Agir maintenant"}
               </button>
             </div>
           </nav>
@@ -40,15 +50,19 @@ const App: React.FC = () => {
 
         <main className="container mx-auto px-4 pt-24">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home showActions={showActions} />} />
             <Route path="/games" element={<Games />} />
             <Route path="/tracker" element={<Tracker />} />
+
           </Routes>
         </main>
 
         <footer className="bg-emerald-900 text-emerald-100 py-8">
           <div className="container mx-auto px-4 text-center">
-            <p>© 2024 BiodiversiVie - Ensemble pour la protection de notre biodiversité</p>
+            <p>
+              © 2024 BiodiversiVie - Ensemble pour la protection de notre
+              biodiversité
+            </p>
           </div>
         </footer>
       </div>
